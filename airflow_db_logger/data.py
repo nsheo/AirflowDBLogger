@@ -30,8 +30,8 @@ class TaskExecutionLogRecord(LoggerModelBase):
 
     id = Column(Integer, primary_key=True)
     timestamp = Column(DateTime)
-    dag_id = Column(String)
-    task_id = Column(String)
+    dag_id = Column(String(255))
+    task_id = Column(String(255))
     execution_date = Column(UtcDateTime)
     try_number = Column(Integer)
     text = Column(Text)
@@ -63,7 +63,7 @@ class DagFileProcessingLogRecord(LoggerModelBase):
 
     id = Column(Integer, primary_key=True)
     timestamp = Column(DateTime)
-    dag_filename = Column(String)
+    dag_filename = Column(String(255))
     text = Column(Text)
 
     def __init__(

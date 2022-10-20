@@ -104,31 +104,31 @@ PROCESS_LOG_FILENAME_TEMPLATE = (
     .replace("}}}}", "}}")
 )
 
-DB_LOGGER_LOG_LEVEL = get(key="logging_level", default="INFO").upper()
-DB_LOGGER_SQL_ALCHEMY_SCHEMA = get("sql_alchemy_schema", SQL_ALCHEMY_SCHEMA)
-DB_LOGGER_SQL_ALCHEMY_CONNECTION = get("sql_alchemy_conn", SQL_ALCHEMY_CONN)
-DB_LOGGER_SHOW_REVERSE_ORDER = get("show_reverse", False)
-DB_LOGGER_SQL_ALCHEMY_CONNECTION_ARGS = get("sql_alchemy_conn_args", None, allow_empty=True)
-DB_LOGGER_CREATE_INDEXES = get("create_index", True)
-DB_LOGGER_WRITE_DAG_PROCESSING_TO_DB = get("write_dag_processing_to_db", False)
+DB_LOGGER_LOG_LEVEL = get(collection="db_logger", key="logging_level", default="INFO").upper()
+DB_LOGGER_SQL_ALCHEMY_SCHEMA = get(collection="db_logger", key="sql_alchemy_schema", default=SQL_ALCHEMY_SCHEMA)
+DB_LOGGER_SQL_ALCHEMY_CONNECTION = get(collection="db_logger", key="sql_alchemy_conn", default=SQL_ALCHEMY_CONN)
+DB_LOGGER_SHOW_REVERSE_ORDER = get(collection="db_logger", key="show_reverse", default=False)
+DB_LOGGER_SQL_ALCHEMY_CONNECTION_ARGS = get(collection="db_logger", key="sql_alchemy_conn_args", default=None, allow_empty=True)
+DB_LOGGER_CREATE_INDEXES = get(collection="db_logger", key="create_index", default=True)
+DB_LOGGER_WRITE_DAG_PROCESSING_TO_DB = get(collection="db_logger", key="write_dag_processing_to_db", default=False)
 
-DB_LOGGER_SQL_ALCHEMY_POOL_ENABLED = get("sql_alchemy_pool_enabled", False)
-DB_LOGGER_SQL_ALCHEMY_POOL_SIZE = get("sql_alchemy_pool_size", 5)
-DB_LOGGER_SQL_ALCHEMY_MAX_OVERFLOW = get("sql_alchemy_max_overflow", 1)
-DB_LOGGER_SQL_ALCHEMY_POOL_RECYCLE = get("sql_alchemy_pool_recycle", 1800)
-DB_LOGGER_SQL_ALCHEMY_POOL_PRE_PING = get("sql_alchemy_pool_pre_ping", True)
-DB_LOGGER_SQL_ENGINE_ENCODING = get("sql_engine_encoding", "utf-8")
+DB_LOGGER_SQL_ALCHEMY_POOL_ENABLED = get(collection="db_logger", key="sql_alchemy_pool_enabled", default=False)
+DB_LOGGER_SQL_ALCHEMY_POOL_SIZE = get(collection="db_logger", key="sql_alchemy_pool_size", default=5)
+DB_LOGGER_SQL_ALCHEMY_MAX_OVERFLOW = get(collection="db_logger", key="sql_alchemy_max_overflow", default=1)
+DB_LOGGER_SQL_ALCHEMY_POOL_RECYCLE = get(collection="db_logger", key="sql_alchemy_pool_recycle", default=1800)
+DB_LOGGER_SQL_ALCHEMY_POOL_PRE_PING = get(collection="db_logger", key="sql_alchemy_pool_pre_ping", default=True)
+DB_LOGGER_SQL_ENGINE_ENCODING = get(collection="db_logger", key="sql_engine_encoding", default="utf-8")
 
-DB_LOGGER_GOOGLE_APP_CREDS_PATH = get("google_application_credentials", default=None, allow_empty=True, otype=str)
+DB_LOGGER_GOOGLE_APP_CREDS_PATH = get(collection="db_logger", key="google_application_credentials", default=None, allow_empty=True, otype=str)
 # A bucket path, requires google-cloud-storage to be installed.
-DB_LOGGER_WRITE_TO_GCS_BUCKET = get("write_to_gcs_bucket", default=None, allow_empty=True, otype=str)
-DB_LOGGER_WRITE_TO_GCS_PROJECT_ID = get("write_to_gcs_project_id", default=None, allow_empty=True, otype=str)
-DB_LOGGER_WRITE_TO_GCS_MULTI_FILE_LOG = get("write_to_gcs_multi_file_log", default=False)
-DB_LOGGER_PROCESSER_LOG_LEVEL = get("processer_log_level", default="WARN", allow_empty=True, otype=str)
+DB_LOGGER_WRITE_TO_GCS_BUCKET = get(collection="db_logger", key="write_to_gcs_bucket", default=None, allow_empty=True, otype=str)
+DB_LOGGER_WRITE_TO_GCS_PROJECT_ID = get(collection="db_logger", key="write_to_gcs_project_id", default=None, allow_empty=True, otype=str)
+DB_LOGGER_WRITE_TO_GCS_MULTI_FILE_LOG = get(collection="db_logger", key="write_to_gcs_multi_file_log", default=False)
+DB_LOGGER_PROCESSER_LOG_LEVEL = get(collection="db_logger", key="processer_log_level", default="WARN", allow_empty=True, otype=str)
 # True or path
-DB_LOGGER_WRITE_TO_FILES = get("write_to_files", default=False)
+DB_LOGGER_WRITE_TO_FILES = get(collection="db_logger", key="write_to_files", default=False)
 # True or path
-DB_LOGGER_WRITE_TO_SHELL = get("write_to_shell", default=IS_RUNNING_DEBUG_EXECUTOR)
+DB_LOGGER_WRITE_TO_SHELL = get(collection="db_logger", key="write_to_shell", default=IS_RUNNING_DEBUG_EXECUTOR)
 
 DB_LOGGER_CONSOLE_FORMATTER = "airflow_coloured" if IS_USING_COLORED_CONSOLE else "airflow"
 DB_LOGGER_TASK_FORMATTER = "airflow_coloured" if IS_RUNNING_DEBUG_EXECUTOR and IS_USING_COLORED_CONSOLE else "airflow"
