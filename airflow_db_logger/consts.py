@@ -30,9 +30,9 @@ def get_default_loggin_config():
 
     os.environ[config_env_name] = "airflow_db_logger.shell_logging_config.LOGGING_CONFIG"
 
-    #from airflow.config_templates.airflow_local_settings import DEFAULT_LOGGING_CONFIG  # noqa
+    from airflow.config_templates.airflow_local_settings import DEFAULT_LOGGING_CONFIG  # noqa
 
     if action_logging_config_env is not None:
         os.environ[config_env_name] = action_logging_config_env
 
-    return DB_LOGGER_LOGGING_CONFIG
+    return DEFAULT_LOGGING_CONFIG
