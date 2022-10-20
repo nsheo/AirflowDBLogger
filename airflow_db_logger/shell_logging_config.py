@@ -41,7 +41,7 @@ def create_shell_logging_config(level=logging.INFO, format: str = LOG_FORMAT, ha
             "propagate": True,
         },
     }
-	LOGGING_CONFIG['root'] = {
+    LOGGING_CONFIG['root'] = {
         "handlers": ["console"],
         "level": level,
     }
