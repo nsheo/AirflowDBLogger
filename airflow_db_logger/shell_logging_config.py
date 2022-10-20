@@ -7,9 +7,7 @@ LOG_FORMAT_HEADER = "[%(asctime)s][%(levelname)7s]"
 LOG_FORMAT = LOG_FORMAT_HEADER + " %(message)s"
 
 
-def create_shell_logging_config(
-    level=logging.INFO, format: str = LOG_FORMAT, handler_class: str = "airflow_db_logger.handlers.StreamHandler"
-):
+def create_shell_logging_config(level=logging.INFO, format: str = LOG_FORMAT, handler_class: str = "airflow_db_logger.handlers.StreamHandler"):
     LOGGING_CONFIG = deepcopy(DEFAULT_LOGGING_CONFIG)
     LOGGING_CONFIG['version'] = 1
     LOGGING_CONFIG['disable_existing_loggers'] = False
@@ -44,21 +42,8 @@ def create_shell_logging_config(
         },
     }
 	LOGGING_CONFIG['root'] = {
-        "airflow.processor": {
-            "handlers": ["processor"],
-            "level": level,
-            "propagate": False,
-        },
-        "airflow.task": {
-            "handlers": ["task"],
-            "level": level,
-            "propagate": False,
-        },
-        "flask_appbuilder": {
-            "handler": ["console"],
-            "level": level,
-            "propagate": True,
-        },
+        "handlers": ["console"],
+        "level": level,
     }
     return LOGGING_CONFIG
 
